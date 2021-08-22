@@ -18,3 +18,19 @@
 - [テスト](docs/TESTING.md)
 - [静的解析](docs/LINTER.md)
 - [CI](docs/GITHUB_ACTIONS.md)
+
+## 課題 1 の結果
+
+詳細は [課題ページ](https://github.com/KeisukeShimokawa/praha-challenges/tree/feature/task36-issue-116/architecture/36_DDD/task_1) を参照する。
+
+ドメインモデル図
+
+![](https://github.com/KeisukeShimokawa/praha-challenges/raw/feature/task36-issue-116/architecture/36_DDD/assets/domainModel.png)
+
+ER 図
+
+![](https://github.com/KeisukeShimokawa/praha-challenges/raw/feature/task36-issue-116/architecture/36_DDD/assets/ER-v2.png)
+
+ユースケース図
+
+![](https://github.com/KeisukeShimokawa/praha-challenges/raw/feature/task36-issue-116/architecture/36_DDD/assets/UseCase.png)
