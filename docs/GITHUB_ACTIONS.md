@@ -1,7 +1,17 @@
 # Github Actions
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<details>
+<summary>Table of Contents</summary>
+
+- [Github Actions 入門](#github-actions-%E5%85%A5%E9%96%80)
+  - [プルリクエスト時の挙動設定](#%E3%83%97%E3%83%AB%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E6%99%82%E3%81%AE%E6%8C%99%E5%8B%95%E8%A8%AD%E5%AE%9A)
+- [NodeJS 用の設定](#nodejs-%E7%94%A8%E3%81%AE%E8%A8%AD%E5%AE%9A)
+  - [キャッシュ設定](#%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5%E8%A8%AD%E5%AE%9A)
+
+</details>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Github Actions 入門
 
