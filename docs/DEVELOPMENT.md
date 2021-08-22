@@ -21,3 +21,22 @@
 作成した ISSUE は下記の Github プロジェクトで進捗を管理する。
 
 https://github.com/KeisukeShimokawa/praha-challenges-ddd/projects/1
+
+## ブランチ運用
+
+Git のブランチモデルとしては、「[Github-Flow](http://scottchacon.com/2011/08/31/github-flow.html)」を採用する。
+
+基本的に作成するブランチは以下の 2 つのみにする。
+
+- main ブランチ
+- feature ブランチ
+
+作業の流れは以下である。
+
+1. `main`ブランチから作業用ブランチを作成する
+2. 作業用ブランチ名は`feature/<作業内容>`
+3. 作業用ブランチに定期的にプッシュする
+4. プルリクエストを実施
+   - Github Actions で CI を実行する
+5. プルリクエストが承認されたら`main`ブランチにマージ
+6. 作業用ブランチの削除
