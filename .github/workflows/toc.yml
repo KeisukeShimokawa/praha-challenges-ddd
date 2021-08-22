@@ -16,4 +16,4 @@ jobs:
         with:
           FOLDING: true
           TOC_TITLE: '**Table of Contents**'
-          TARGET_PATHS: '**/*.md'
+          TARGET_PATHS: 'docs/*.md'
