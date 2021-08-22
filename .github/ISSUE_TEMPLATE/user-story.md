@@ -10,6 +10,10 @@ assignees: ''
 
 ## Given-When-Then (期待する動作)
 
+- Given (初期状態)
+- When (アクション)
+- Then (期待する状態)
+
 ## What are Examples? (ほかに具体例はないか)
 
 ## The Definition of "Done" (完了の定義)
