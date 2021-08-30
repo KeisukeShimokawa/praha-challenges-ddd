@@ -34,6 +34,4 @@ describe('ValueObject の基底クラス', () => {
       expect(vo1.equals(vo2)).toBeTruthy();
     });
   });
-
-  // describe('副作用がない振る舞いになる', () => {});
 });
