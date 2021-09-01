@@ -9,7 +9,7 @@ export abstract class ValueObject<T extends PrimitiveTypes, U extends string> {
   }
 
   public equals(vo: ValueObject<T, U>): boolean {
-    return this.value === vo.value;
+    return this._value === vo._value;
   }
 
   public get value(): T {
