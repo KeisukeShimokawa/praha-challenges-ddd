@@ -6,7 +6,7 @@ class DummyValueObject extends ValueObject<string, 'dummy'> {
   }
 }
 
-describe('ValueObject の基底クラス', () => {
+describe('値オブジェクト ValueObject の基底クラス', () => {
   describe('初期化した値を参照できる', () => {
     it('文字列 "Value Object" で初期化して、その値を抽出する', () => {
       // Given
