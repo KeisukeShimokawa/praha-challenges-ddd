@@ -26,19 +26,12 @@ model TaskProgresses {
   participant    Participant    @relation(fields: [participantId], references: [id])
   taskId         String
   task           Task           @relation(fields: [taskId], references: [id])
-  progressStatus ProgressStatus @default(NOT_YET_DOING)
+  progressStatus String 
   updatedAt      DateTime       @updatedAt
   createdAt      DateTime       @default(now())
 
   @@unique([participantId, taskId])
   @@map("task_progresses")
-}
-
-enum ProgressStatus {
-  NOT_YET_DOING
-  DOING
-  IN_REVIEW
-  DONE
 }
 
 // ##############
@@ -48,7 +41,7 @@ model Participant {
   id               String                @id
   email            String                @unique
   name             String
-  enrollmentStatus EnrollmentStatus      @default(ENROLLMENT)
+  enrollmentStatus String
   progresses       TaskProgresses[]
   pairs            PairWithParticipant[]
   teams            TeamWithParticipant[]
