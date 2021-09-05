@@ -38,16 +38,15 @@ model TaskProgresses {
 //  参加者集約
 // ##############
 model Participant {
-  id               String                @id
-  email            String                @unique
+  id               String           @id
+  email            String           @unique
   name             String
   enrollmentStatus String
   progresses       TaskProgresses[]
-  pair             Pair                  @relation(fields: [pairId], references: [id])
-  pairId           String
-  teams            TeamWithParticipant[]
-  updatedAt        DateTime              @updatedAt
-  createdAt        DateTime              @default(now())
+  pair             Pair?            @relation(fields: [pairId], references: [id])
+  pairId           String?
+  updatedAt        DateTime         @updatedAt
+  createdAt        DateTime         @default(now())
 
   @@map("participant")
 }
@@ -56,11 +55,13 @@ model Participant {
 //  ペア集約
 // ##############
 model Pair {
-  id           String        @id
+  id           String         @id
   name         String
   participants Participant[]
-  updatedAt    DateTime      @updatedAt
-  createdAt    DateTime      @default(now())
+  team         TeamWithPairs?
+  teamId       String
+  updatedAt    DateTime       @updatedAt
+  createdAt    DateTime       @default(now())
 
   @@map("pair")
 }
@@ -69,23 +70,23 @@ model Pair {
 //  チーム集約
 // ##############
 model Team {
-  id           String                @id
-  name         String
-  participants TeamWithParticipant[]
-  updatedAt    DateTime              @updatedAt
-  createdAt    DateTime              @default(now())
+  id        String          @id
+  name      String
+  pairs     TeamWithPairs[]
+  updatedAt DateTime        @updatedAt
+  createdAt DateTime        @default(now())
 
   @@map("team")
 }
 
-model TeamWithParticipant {
-  team          Team        @relation(fields: [teamId], references: [id])
-  teamId        String
-  participant   Participant @relation(fields: [participantId], references: [id])
-  participantId String
-  updatedAt     DateTime    @updatedAt
-  createdAt     DateTime    @default(now())
+model TeamWithPairs {
+  team      Team     @relation(fields: [teamId], references: [id])
+  teamId    String
+  pair      Pair     @relation(fields: [pairId], references: [id])
+  pairId    String
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
 
-  @@unique([teamId, participantId])
-  @@map("team_with_participant")
+  @@unique([teamId, pairId])
+  @@map("team_with_pair")
 }
