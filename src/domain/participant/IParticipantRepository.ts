@@ -1,3 +1,5 @@
+import { Participant } from './entity/Participant';
+
 export interface IParticipantRespository {
-  getAllParticipant();
+  save(participant: Participant);
 }
