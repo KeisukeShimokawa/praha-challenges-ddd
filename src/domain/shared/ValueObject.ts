@@ -2,9 +2,9 @@ type PrimitiveTypes = string | number | boolean;
 
 export abstract class ValueObject<T extends PrimitiveTypes, U extends string> {
   private _: U;
-  protected readonly _value: T;
+  private readonly _value: T;
 
-  public constructor(value: T) {
+  protected constructor(value: T) {
     this._value = value;
   }
 

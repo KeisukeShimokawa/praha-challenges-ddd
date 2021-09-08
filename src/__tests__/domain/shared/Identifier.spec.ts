@@ -1,7 +1,11 @@
 import { Identifier } from 'src/domain/shared/Identifier';
 import * as nanoid from 'nanoid';
 
-class DummyIdentifier extends Identifier<'DummyIdentifier'> {}
+class DummyIdentifier extends Identifier<'DummyIdentifier'> {
+  public static create(): DummyIdentifier {
+    return new DummyIdentifier();
+  }
+}
 
 describe('識別子 Identifier の基底クラス', () => {
   let nanoidSpy: jest.SpyInstance;
@@ -14,19 +18,6 @@ describe('識別子 Identifier の基底クラス', () => {
     nanoidSpy.mockReset();
   });
 
-  describe('文字列の識別子を引数で与えることができる', () => {
-    it('引数に識別子となる文字列 "id-1" を与えて、識別子クラスを生成する', () => {
-      // Given
-      const expected = 'id-1';
-
-      // When
-      const actual = new DummyIdentifier(expected);
-
-      // Then
-      expect(actual.value).toBe(expected);
-    });
-  });
-
   describe('文字列の識別子を自動生成する', () => {
     it('引数に何も指定しない場合、nanoid を使用して自動的に識別子を生成する', () => {
       // Given
@@ -34,7 +25,7 @@ describe('識別子 Identifier の基底クラス', () => {
       nanoidSpy.mockReturnValueOnce(expected);
 
       // When
-      const actual = new DummyIdentifier();
+      const actual = DummyIdentifier.create();
 
       // Then
       expect(actual.value).toBe(expected);
@@ -45,10 +36,11 @@ describe('識別子 Identifier の基底クラス', () => {
     it('同じ文字列の値を有する識別子を2つ生成し、equals で比較すると true となる', () => {
       // Given
       const identity = 'id-same-1';
+      nanoidSpy.mockReturnValue(identity);
 
       // When
-      const identifier1 = new DummyIdentifier(identity);
-      const identifier2 = new DummyIdentifier(identity);
+      const identifier1 = DummyIdentifier.create();
+      const identifier2 = DummyIdentifier.create();
 
       // Then
       expect(identifier1.equals(identifier2)).toBeTruthy();
@@ -58,10 +50,12 @@ describe('識別子 Identifier の基底クラス', () => {
       // Given
       const identity1 = 'id-wrong-1';
       const identity2 = 'id-wrong-2';
+      nanoidSpy.mockReturnValueOnce(identity1);
+      nanoidSpy.mockReturnValueOnce(identity2);
 
       // When
-      const identifier1 = new DummyIdentifier(identity1);
-      const identifier2 = new DummyIdentifier(identity2);
+      const identifier1 = DummyIdentifier.create();
+      const identifier2 = DummyIdentifier.create();
 
       // Then
       expect(identifier1.equals(identifier2)).toBeFalsy();

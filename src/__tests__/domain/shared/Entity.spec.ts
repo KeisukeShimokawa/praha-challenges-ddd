@@ -1,37 +1,54 @@
 import { Entity } from 'src/domain/shared/Entity';
 import { Identifier } from 'src/domain/shared/Identifier';
+import * as nanoid from 'nanoid';
 
 interface DummyEntityProps {
   name: string;
   age: number;
 }
 
-class DummyIdentifier extends Identifier<'DummyIdentifier'> {}
+class DummyIdentifier extends Identifier<'DummyIdentifier'> {
+  public static create(): DummyIdentifier {
+    return new DummyIdentifier();
+  }
+}
 
 class DummyEntity extends Entity<DummyEntityProps, DummyIdentifier> {
-  constructor(id: DummyIdentifier, props: DummyEntityProps) {
-    super(id, props);
+  public static create(props: DummyEntityProps): DummyEntity {
+    const id = DummyIdentifier.create();
+
+    return new DummyEntity(id, props);
   }
 }
 
 describe('エンティティ Entity の基底クラス', () => {
+  let nanoidSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    nanoidSpy = jest.spyOn(nanoid, 'nanoid');
+  });
+
+  afterEach(() => {
+    nanoidSpy.mockReset();
+  });
+
   describe('同一性を担保できる', () => {
     it('同じ値の識別子を自動採番し、属性が同じ場合、同じエンティティだと判断する', () => {
       // Given
-      const identifier1 = new DummyIdentifier('sample');
       const props1 = {
         name: 'sample',
         age: 1,
       };
-      const identifier2 = new DummyIdentifier('sample');
       const props2 = {
         name: 'sammple',
         age: 1,
       };
+      const identity = '1234';
+      nanoidSpy.mockReturnValue(identity);
 
       // When
-      const entity1 = new DummyEntity(identifier1, props1);
-      const entity2 = new DummyEntity(identifier2, props2);
+      const entity1 = DummyEntity.create(props1);
+      const entity2 = DummyEntity.create(props2);
 
       // Then
       expect(entity1.equals(entity2)).toBeTruthy();
@@ -39,20 +56,20 @@ describe('エンティティ Entity の基底クラス', () => {
 
     it('同じ値の識別子を自動採番し、属性が異なる場合、同じエンティティだと判断する', () => {
       // Given
-      const identifier1 = new DummyIdentifier('sample');
       const props1 = {
         name: 'sample name 1',
         age: 10,
       };
-      const identifier2 = new DummyIdentifier('sample');
       const props2 = {
         name: 'sammple name 2',
         age: 20,
       };
+      const identity = '1234';
+      nanoidSpy.mockReturnValue(identity);
 
       // When
-      const entity1 = new DummyEntity(identifier1, props1);
-      const entity2 = new DummyEntity(identifier2, props2);
+      const entity1 = DummyEntity.create(props1);
+      const entity2 = DummyEntity.create(props2);
 
       // Then
       expect(entity1.equals(entity2)).toBeTruthy();
@@ -60,20 +77,22 @@ describe('エンティティ Entity の基底クラス', () => {
 
     it('異なる識別子を自動採番し、属性が同じ場合、異なるエンティティだと判断する', () => {
       // Given
-      const identifier1 = new DummyIdentifier('sample 1');
+      const identity1 = '1234';
       const props1 = {
         name: 'sample',
         age: 1,
       };
-      const identifier2 = new DummyIdentifier('sample 2');
+      const identity2 = '5678';
       const props2 = {
         name: 'sammple',
         age: 1,
       };
+      nanoidSpy.mockReturnValueOnce(identity1);
+      nanoidSpy.mockReturnValueOnce(identity2);
 
       // When
-      const entity1 = new DummyEntity(identifier1, props1);
-      const entity2 = new DummyEntity(identifier2, props2);
+      const entity1 = DummyEntity.create(props1);
+      const entity2 = DummyEntity.create(props2);
 
       // Then
       expect(entity1.equals(entity2)).toBeFalsy();
