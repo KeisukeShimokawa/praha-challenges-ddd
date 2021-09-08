@@ -1,6 +1,6 @@
 // https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
 
-import { ValueObject } from '../shared/ValueObject';
+import { ValueObject } from '../../shared/ValueObject';
 
 export class ParticipantEmail extends ValueObject<string, 'ParticipantEmail'> {
   private static isValidEmail(email: string): boolean {

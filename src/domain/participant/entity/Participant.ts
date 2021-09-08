@@ -1,10 +1,10 @@
-import { Entity } from '../shared/Entity';
-import { TaskId } from '../task/TaskId';
-import { PairId } from '../team/PairId';
-import { EnrollmentStatusType } from './EnrollmentStatus';
-import { ParticipantEmail } from './ParticipantEmail';
-import { ParticipantId } from './ParticipantId';
-import { ParticipantName } from './ParticipantName';
+import { Entity } from '../../shared/Entity';
+import { TaskId } from '../../task/TaskId';
+import { PairId } from '../../team/PairId';
+import { EnrollmentStatusType } from '../vo/EnrollmentStatus';
+import { ParticipantEmail } from '../vo/ParticipantEmail';
+import { ParticipantId } from '../vo/ParticipantId';
+import { ParticipantName } from '../vo/ParticipantName';
 
 interface ParticipantCreateArgs {
   name: ParticipantName;

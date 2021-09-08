@@ -1,4 +1,4 @@
-import { ParticipantEmail } from 'src/domain/participant/ParticipantEmail';
+import { ParticipantEmail } from 'src/domain/participant/vo/ParticipantEmail';
 
 describe('値オブジェクト<"参加者のメールアドレス"> ParticipantEmail', () => {
   describe('参加者のメールアドレスの制約に従う引数を受け取った場合、値オブジェクトを生成できる', () => {

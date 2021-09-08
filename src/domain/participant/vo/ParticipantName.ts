@@ -1,4 +1,4 @@
-import { ValueObject } from '../shared/ValueObject';
+import { ValueObject } from '../../shared/ValueObject';
 
 export class ParticipantName extends ValueObject<string, 'ParticipantName'> {
   private constructor(name: string) {
