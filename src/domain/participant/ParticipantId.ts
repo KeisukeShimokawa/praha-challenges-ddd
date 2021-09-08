@@ -1,7 +1,7 @@
 import { Identifier } from '../shared/Identifier';
 
 export class ParticipantId extends Identifier<'ParticipantId'> {
-  constructor(id?: string) {
-    super(id);
+  public static create(id?): ParticipantId {
+    return new ParticipantId(id);
   }
 }

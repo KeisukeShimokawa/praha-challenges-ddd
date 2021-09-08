@@ -3,10 +3,6 @@
 import { ValueObject } from '../shared/ValueObject';
 
 export class ParticipantEmail extends ValueObject<string, 'ParticipantEmail'> {
-  private constructor(email: string) {
-    super(email.toLowerCase());
-  }
-
   private static isValidEmail(email: string): boolean {
     const re =
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -20,6 +16,6 @@ export class ParticipantEmail extends ValueObject<string, 'ParticipantEmail'> {
       throw new Error('メールアドレスが正しいフォーマットではありません。');
     }
 
-    return new ParticipantEmail(email);
+    return new ParticipantEmail(email.toLowerCase());
   }
 }

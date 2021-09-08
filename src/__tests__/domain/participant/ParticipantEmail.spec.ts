@@ -1,4 +1,4 @@
-import { ParticipantEmail } from 'src/domain/participants/ParticipantEmail';
+import { ParticipantEmail } from 'src/domain/participant/ParticipantEmail';
 
 describe('値オブジェクト<"参加者のメールアドレス"> ParticipantEmail', () => {
   describe('参加者のメールアドレスの制約に従う引数を受け取った場合、値オブジェクトを生成できる', () => {
@@ -13,6 +13,7 @@ describe('値オブジェクト<"参加者のメールアドレス"> Participant
       expect(actual.value).toBe(expected);
     });
   });
+
   describe('参加者のメールアドレスの制約に従わない引数を受け取った場合、例外を送出する', () => {
     it('"shimokawa" を引数に指定し、"メールアドレスが正しいフォーマットではありません。" という例外を送出する', () => {
       // Arrange
@@ -20,7 +21,7 @@ describe('値オブジェクト<"参加者のメールアドレス"> Participant
       const testData = 'shimokawa';
 
       // Act & Assert
-      expect(ParticipantEmail.create(testData)).toThrowError(expected);
+      expect(() => ParticipantEmail.create(testData)).toThrow(expected);
     });
   });
 });
