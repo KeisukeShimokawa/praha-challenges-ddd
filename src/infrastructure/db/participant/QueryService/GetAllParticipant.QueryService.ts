@@ -28,6 +28,7 @@ export class GetAllParticipantQueryService
           id: participant.id,
           name: participant.name,
           email: participant.email,
+          enrollmentStatus: participant.enrollmentStatus,
           tasks: participant.progresses.map((task) => task.taskId),
           pair: participant.pairId,
         }),
