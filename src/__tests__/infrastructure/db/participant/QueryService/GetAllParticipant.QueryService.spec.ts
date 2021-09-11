@@ -42,5 +42,32 @@ describe('クエリサービス: 参加者全員を取得するクエリサー�
       // Assert
       expect(actual.length).toBe(testData.count);
     });
+
+    it('DBに登録されている参加者の情報を取得した際、クエリ用のDTOにマッピングされている', async () => {
+      // Arrange
+      const testData = await prisma.participant.create({
+        data: {
+          id: '1',
+          name: 'test',
+          email: 'test@example.com',
+          enrollmentStatus: '在籍中',
+        },
+        include: {
+          pair: true,
+          progresses: true,
+        },
+      });
+
+      // Act
+      const actual = await sut.getAll();
+
+      // Assert
+      expect(actual[0].id).toBe(testData.id);
+      expect(actual[0].name).toBe(testData.name);
+      expect(actual[0].email).toBe(testData.email);
+      expect(actual[0].enrollmentStatus).toBe(testData.enrollmentStatus);
+      expect(actual[0].tasks.length).toEqual(testData.progresses.length);
+      expect(actual[0].pair).toEqual(testData.pairId);
+    });
   });
 });
