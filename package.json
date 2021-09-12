@@ -5,6 +5,9 @@
   "author": "",
   "private": true,
   "license": "UNLICENSED",
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "scripts": {
     "db:up": "docker-compose up -d",
     "db:down": "docker-compose down",
@@ -23,8 +26,7 @@
     "model-generate": "prisma generate",
     "migrate:dev": "dotenv -e .env.dev -- prisma migrate dev --preview-feature",
     "migrate:dev:reset": "dotenv -e .env.dev -- prisma migrate reset --preview-feature",
-    "migrate:test": "dotenv -e .env.test -- prisma migrate reset --force --preview-feature",
-    "ts-node": "ts-node --compiler-options \"{\\\"module\\\":\\\"commonjs\\\"}\""
+    "migrate:test": "dotenv -e .env.test -- prisma migrate reset --force --preview-feature"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
