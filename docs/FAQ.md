@@ -76,3 +76,5 @@ GET /participants/:participantId
 GET /tasks
 GET /tasks/:taskId
 ```
+
+## Q: リードモデルに対して、GraphQL を使用することはありますか
