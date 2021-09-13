@@ -15,8 +15,63 @@
 
 ## Q: フロントエンドとバックエンドで、エンドポイントに関する型定義をどのように共有すればいいのか
 
+特大課題において、現在バックエンドの 1 つのエンドポイントに対して、その型を定義しています（下記イメージ）。
+
+```bash
+/src
+├── presentation
+│   └── participant
+│       ├── participant.controller.ts
+│       └── response
+│           └── GetAllParticipant.response.ts
+```
+
+もしもエンドポイントごとに、`response` ファイルを作成する場合、エンドポイントの数だけ専用の型定義が作成されるかと思いますが、この型定義をフロントエンド側とどのように共有しているでしょうか。
+
 ## Q: クエリサービスが使用する DTO のマッピングをどのように記述するのか
+
+リポジトリ内で Prisma から取得してきた値を、DTO にマッピングさせる方法に関して質問です。
+
+CQRS を使用して、WriteModel と ReadModel を分離させた場合、WriteModel に関してはリポジトリ内で Entity にマッピングすればいいと考えています。
+
+ReadModel の場合は専用の DTO にマッピングさせる必要があるかと思いますが、これはクエリサービスのリポジトリに毎回マッピングさせるための処理を記述しているのでしょうか（処理を共通化させたりしていることはありますか）。
 
 ## Q: API で似たデータを取得する場合に、型定義を共有したりするのか
 
+例えば下記のようなエンドポイントが定義されていたとします。
+
+```bash
+GET /participants
+GET /temas/:teamId/participants
+GET /pairs/:pairId/participants
+```
+
+この場合、各エンドポイントが返す参加者に関するデータ構造は共通化させたりしていますか?
+
+それとも、同じ構造のデータを返す場合であっても、ユースケースが異なるということで定義自体も分けたりしているのでしょうか。
+
 ## Q: 集約とエンドポイントの配置場所に関連はあるのか
+
+例えば下記のような集約を想定します。
+
+```bash
+- team        # チームが集約ルート
+  - pair      # ペアは参加者のID参照
+
+- participant # ペアや課題のID参照
+
+- task        # 参加者のID参照
+```
+
+この場合、REST API を考慮したエンドポイントは下記のように定義する認識でよろしいでしょうか。
+
+```bash
+GET /teams
+GET /teams/:teamId
+GET /teams/:teamId/pairs          # あくまでもチームのサブリソースとして定義
+GET /teams/:teamId/pairs/:pairId  # あくまでもチームのサブリソースとして定義
+GET /participants
+GET /participants/:participantId
+GET /tasks
+GET /tasks/:taskId
+```
