@@ -1,6 +1,7 @@
 import { GetAllParticipantQueryService } from 'src/infrastructure/db/participant/QueryService/GetAllParticipant.QueryService';
 import { PrismaService } from 'src/shared/prisma/PrismaService';
 import { IGetAllParticipantQueryService } from 'src/usecase/participant/QueryServiceInterface/GetAllParticipant.queryServiceInterface';
+import { ParticipantBuilder } from 'src/__tests__/builders/participant.builder';
 
 describe('クエリサービス: 参加者全員を取得するクエリサービス', () => {
   let prisma: PrismaService;
@@ -19,44 +20,21 @@ describe('クエリサービス: 参加者全員を取得するクエリサー�
   describe('参加者全員を永続化層から取得できる', () => {
     it('DBに参加者が2件登録されている場合に、2件とも取得できる', async () => {
       // Arrange
-      const testData = await prisma.participant.createMany({
-        data: [
-          {
-            id: '1',
-            name: 'test',
-            email: 'test@example.com',
-            enrollmentStatus: '在籍中',
-          },
-          {
-            id: '2',
-            name: 'test2',
-            email: 'test2@example.com',
-            enrollmentStatus: '在籍中',
-          },
-        ],
-      });
+      const testData = [
+        await ParticipantBuilder(prisma),
+        await ParticipantBuilder(prisma),
+      ];
 
       // Act
       const actual = await sut.getAll();
 
       // Assert
-      expect(actual.length).toBe(testData.count);
+      expect(actual.length).toBe(testData.length);
     });
 
     it('DBに登録されている参加者の情報を取得した際、クエリ用のDTOにマッピングされている', async () => {
       // Arrange
-      const testData = await prisma.participant.create({
-        data: {
-          id: '1',
-          name: 'test',
-          email: 'test@example.com',
-          enrollmentStatus: '在籍中',
-        },
-        include: {
-          pair: true,
-          progresses: true,
-        },
-      });
+      const testData = await ParticipantBuilder(prisma);
 
       // Act
       const actual = await sut.getAll();
