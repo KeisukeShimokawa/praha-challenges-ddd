@@ -1,8 +1,10 @@
+import { Injectable } from '@nestjs/common';
 import {
   GetAllParticipantDTO,
   IGetAllParticipantQueryService,
 } from './QueryServiceInterface/GetAllParticipant.queryServiceInterface';
 
+@Injectable()
 export class GetAllParticipantUseCase {
   public constructor(
     private readonly getAllParticipantQueryService: IGetAllParticipantQueryService,

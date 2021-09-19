@@ -1,17 +1,15 @@
-import { PrismaClient } from '.prisma/client';
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'src/shared/prisma/PrismaService';
 import {
   GetAllParticipantDTO,
   IGetAllParticipantQueryService,
 } from 'src/usecase/participant/QueryServiceInterface/GetAllParticipant.queryServiceInterface';
 
+@Injectable()
 export class GetAllParticipantQueryService
   implements IGetAllParticipantQueryService
 {
-  private prismaClient: PrismaClient;
-
-  public constructor(prismaClient: PrismaClient) {
-    this.prismaClient = prismaClient;
-  }
+  constructor(private prismaClient: PrismaService) {}
 
   public async getAll(): Promise<GetAllParticipantDTO[]> {
     const allParticipantORM = await this.prismaClient.participant.findMany({
