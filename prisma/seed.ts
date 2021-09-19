@@ -7,8 +7,6 @@ const prisma = new PrismaClient();
 async function main() {
   console.log('check environment ...');
   console.log(process.env.NODE_ENV);
-
-  console.log('seeding data ...');
 }
 
 main()

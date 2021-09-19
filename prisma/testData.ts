@@ -103,5 +103,10 @@ export const pairs: Prisma.PairCreateInput[] = [
       },
     },
     teamId: '1',
+    participants: {
+      connect: {
+        email: '11',
+      },
+    },
   },
 ];

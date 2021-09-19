@@ -33,8 +33,7 @@ describe('参加者に対する受入テスト', () => {
       ],
     };
 
-    return request(app.getHttpServer()).get('/participants').expect(404);
-    // .expect(200)
-    // .expect(expected);
+    // TODO: 参加者を追加する機能が完成した後で、取得のテストを実行する
+    return request(app.getHttpServer()).get('/participants').expect(200);
   });
 });
