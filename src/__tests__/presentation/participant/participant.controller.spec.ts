@@ -45,5 +45,27 @@ describe('コントローラー: 参加者に関するエンドポイントを�
       // Assert
       expect(actual.allParticipant.length).toBe(0);
     });
+
+    it('参加者が1件以上取得できた場合、配列に各要素を格納してクライアントに返す', async () => {
+      // Arrange
+      jest
+        .spyOn(fakeGetAllParticipantUseCase, 'execute')
+        .mockResolvedValueOnce([
+          new GetAllParticipantDTO({
+            id: '1',
+            email: 'sample@gmail.com',
+            name: 'test',
+            enrollmentStatus: EnrollmentStatusType.ENROLLMENT,
+            tasks: [],
+            pair: null,
+          }),
+        ]);
+
+      // Act
+      const actual = await sut.getAllParticipant();
+
+      // Assert
+      expect(actual.allParticipant.length).toBe(1);
+    });
   });
 });
