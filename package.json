@@ -28,7 +28,9 @@
     "migrate:dev:reset": "dotenv -e .env.dev -- prisma migrate reset --preview-feature",
     "migrate:test": "dotenv -e .env.test -- prisma migrate reset --force --preview-feature",
     "seed:dev": "dotenv -e .env.dev -- prisma db seed",
-    "seed:test": "dotenv -e .env.test -- prisma db seed"
+    "seed:test": "dotenv -e .env.test -- prisma db seed",
+    "studio:dev": "dotenv -e .env.dev -- prisma studio",
+    "studio:test": "dotenv -e .env.test -- prisma studio"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
