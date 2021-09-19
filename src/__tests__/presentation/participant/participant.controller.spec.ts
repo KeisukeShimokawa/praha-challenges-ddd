@@ -1,20 +1,36 @@
-import { PrismaClient } from '.prisma/client';
-import { GetAllParticipantQueryService } from 'src/infrastructure/db/participant/QueryService/GetAllParticipant.QueryService';
 import { GetAllParticipantUseCase } from 'src/usecase/participant/GetAllParticipant.usecase';
 import { ParticipantController } from 'src/presentation/participant/participant.controller';
-
-// jest.mock('.prisma/client');
-// jest.mock(
-//   'src/infrastructure/db/participant/QueryService/GetAllParticipant.QueryService',
-// );
-// jest.mock('src/presentation/participant/participant.controller');
-
-// const PrismaClientMock = PrismaClient as jest.Mock;
-// const GetAllParticipantQSMock = GetAllParticipantQueryService as jest.Mock;
-// const GetAllParticipantUseCaseMock = GetAllParticipantUseCase as jest.Mock;
+import { Test, TestingModule } from '@nestjs/testing';
+import { GetAllParticipantDTO } from 'src/usecase/participant/QueryServiceInterface/GetAllParticipant.queryServiceInterface';
+import { EnrollmentStatusType } from 'src/domain/participant/vo/EnrollmentStatus';
 
 describe('コントローラー: 参加者に関するエンドポイントを提供する', () => {
   let sut: ParticipantController;
+  let fakeGetAllParticipantUseCase: Partial<GetAllParticipantUseCase>;
+
+  beforeEach(async () => {
+    fakeGetAllParticipantUseCase = {
+      execute: jest.fn(),
+    };
+
+    const module: TestingModule = await Test.createTestingModule({
+      controllers: [ParticipantController],
+      providers: [
+        {
+          provide: GetAllParticipantUseCase,
+          useValue: fakeGetAllParticipantUseCase,
+        },
+      ],
+    }).compile();
+
+    sut = module.get<ParticipantController>(ParticipantController);
+  });
+
+  describe('DIによりControllerがインスタンス化されていること', () => {
+    it('Controller が undefined ではない', () => {
+      expect(sut).toBeDefined();
+    });
+  });
 
   describe('"GET /participant" に対するリクエストができる', () => {
     let PrismaClientMock: jest.Mock;
