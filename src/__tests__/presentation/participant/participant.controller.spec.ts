@@ -32,26 +32,18 @@ describe('コントローラー: 参加者に関するエンドポイントを�
     });
   });
 
-  describe('"GET /participant" に対するリクエストができる', () => {
-    let PrismaClientMock: jest.Mock;
-    let GetAllParticipantQSMock: jest.Mock;
-    let GetAllParticipantUseCaseMock: jest.Mock;
+  describe('"GET /participants" に対するリクエストができる', () => {
+    it('参加者が1件も取得できなかった場合、空配列を返す', async () => {
+      // Arrange
+      jest
+        .spyOn(fakeGetAllParticipantUseCase, 'execute')
+        .mockResolvedValueOnce([]);
 
-    // beforeEach(() => {
-    //   PrismaClientMock = PrismaClient as jest.Mock;
-    //   GetAllParticipantQSMock = GetAllParticipantQueryService as jest.Mock;
-    //   GetAllParticipantUseCaseMock = GetAllParticipantUseCase as jest.Mock;
+      // Act
+      const actual = await sut.getAllParticipant();
 
-    //   sut = new ParticipantController();
-    // });
-
-    // it('参加者が', async () => {
-    //   // Arrange
-    //   PrismaClientMock.mockReturnValueOnce(new PrismaClient());
-    //   GetAllParticipantQSMock.mockImplementationOnce();
-
-    //   // Act
-    //   // Assert
-    // });
+      // Assert
+      expect(actual.allParticipant.length).toBe(0);
+    });
   });
 });
