@@ -6,8 +6,8 @@ import {
 } from 'src/usecase/participant/QueryServiceInterface/GetAllParticipant.queryServiceInterface';
 
 describe('ユースケース: 参加者全員を取得する', () => {
-  let queryServiceMock: MockProxy<IGetAllParticipantQueryService>;
   let sut: GetAllParticipantUseCase;
+  let queryServiceMock: MockProxy<IGetAllParticipantQueryService>;
 
   beforeEach(() => {
     queryServiceMock = mock<IGetAllParticipantQueryService>();
