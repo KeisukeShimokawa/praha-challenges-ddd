@@ -85,6 +85,48 @@ GET /tasks/:taskId
 
 ## Q: エンティティや値オブジェクトを基底クラスとして使用する場合、単体テストに関して、具象クラスとどのように役割分担をしていますか
 
+例えば以下のような場合です。
+
+```bash
+src/__tests__/domain
+├── participant
+│   ├── entity
+│   │   └── Participant.spec.ts       # 参加者集約の制約の検証
+│   └── vo
+│       └── ParticipantEmail.spec.ts  # Eメールの制約の検証
+└── shared
+    ├── Entity.spec.ts                # エンティティとして有すべき特徴の検証
+    ├── Identifier.spec.ts            # 識別子として有すべき特徴の検証
+    └── ValueObject.spec.ts           # 値オブジェクトとして有すべき特徴の検証
+```
+
+この場合は、E メールのテストケースには、E メールの等価性の検証や不変性の検証は実施せずに、メールアドレスのフォーマットに従っている場合と層ではない場合のテストのみ実施します。
+
 ## Q: 結合テストや単体テストで Prisma を使用する場合、どのようにデータを初期化していますか
 
+今はリポジトリの単体テストと結合テストの両方で、Prisma を使用しており、それぞれ下記のようにテーブルの初期化などを行っています。
+
+- 単体テスト
+  - [ユーティリティ](../src/shared/prisma/PrismaService.ts)
+  - [使用例](../src/__tests__/infrastructure/db/participant/QueryService/GetAllParticipant.QueryService.spec.ts)
+- 結合テスト
+  - [ユーティリティ](../test/utils/TestPrismaService.ts)
+  - [使用例](../test/participants.e2e-spec.ts)
+
 ## Q: NestJS を使用している場合、コントローラーに対して大量のユースケースクラスが紐づくと思っていますが、これはコントローラーのコンストラクタにべた書きする方法以外に何かありますか
+
+コントローラーの実装が以下のようになってしまうと思いますが、この設定を別途ファイルに外だししていますか。
+
+```js
+@Controller('/participants')
+export class ParticipantController {
+  constructor(
+    private getAllParticipantUseCase: GetAllParticipantUseCase,
+    private getParticipantUseCase: GetParticipantUseCase,
+    private postParticipantUseCase: PostParticipantUseCase,
+    private deleteParticipantUseCase: DeleteParticipantUseCase,
+    private patchParticipantUseCase: PatchParticipantUseCase,
+    // ...
+  ) {}
+}
+```
