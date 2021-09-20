@@ -20,6 +20,10 @@ describe('参加者に対する受入テスト', () => {
     // await resetDatabase();
   });
 
+  afterEach(async () => {
+    await app.close();
+  });
+
   it('GET /participants', () => {
     const expected: GetAllParticipantResponse = {
       allParticipant: [
