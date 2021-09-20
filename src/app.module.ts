@@ -14,6 +14,10 @@ import { GetAllParticipantUseCase } from './usecase/participant/GetAllParticipan
     PrismaService,
     GetAllParticipantUseCase,
     GetAllParticipantQueryService,
+    {
+      provide: 'IGetAllParticipantQueryService',
+      useClass: GetAllParticipantQueryService,
+    },
   ],
 })
 export class AppModule {}

@@ -1,11 +1,14 @@
-import { Injectable } from '@nestjs/common';
-import { GetAllParticipantQueryService } from 'src/infrastructure/db/participant/QueryService/GetAllParticipant.QueryService';
-import { GetAllParticipantDTO } from './QueryServiceInterface/GetAllParticipant.queryServiceInterface';
+import { Inject, Injectable } from '@nestjs/common';
+import {
+  GetAllParticipantDTO,
+  IGetAllParticipantQueryService,
+} from './QueryServiceInterface/GetAllParticipant.queryServiceInterface';
 
 @Injectable()
 export class GetAllParticipantUseCase {
   public constructor(
-    private readonly getAllParticipantQueryService: GetAllParticipantQueryService,
+    @Inject('IGetAllParticipantQueryService')
+    private readonly getAllParticipantQueryService: IGetAllParticipantQueryService,
   ) {}
 
   public async execute(): Promise<GetAllParticipantDTO[]> {
