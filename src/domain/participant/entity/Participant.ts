@@ -1,5 +1,5 @@
 import { Entity } from '../../shared/Entity';
-import { TaskId } from '../../task/TaskId';
+import { TaskId } from '../../task/vo/TaskId';
 import { PairId } from '../../team/PairId';
 import { EnrollmentStatusType } from '../vo/EnrollmentStatus';
 import { ParticipantEmail } from '../vo/ParticipantEmail';
