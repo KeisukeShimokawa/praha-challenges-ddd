@@ -1,8 +1,8 @@
 import { ValueObject } from 'src/domain/shared/ValueObject';
 
 class DummyValueObject extends ValueObject<string, 'dummy'> {
-  constructor(value: string) {
-    super(value);
+  public static create(value: string): DummyValueObject {
+    return new DummyValueObject(value);
   }
 }
 
@@ -13,7 +13,7 @@ describe('値オブジェクト ValueObject の基底クラス', () => {
       const expected = 'Value Object';
 
       // When
-      const actual = new DummyValueObject(expected);
+      const actual = DummyValueObject.create(expected);
 
       // Then
       expect(actual.value).toBe(expected);
@@ -27,8 +27,8 @@ describe('値オブジェクト ValueObject の基底クラス', () => {
       const testData2 = 'Value Object';
 
       // When
-      const vo1 = new DummyValueObject(testData1);
-      const vo2 = new DummyValueObject(testData2);
+      const vo1 = DummyValueObject.create(testData1);
+      const vo2 = DummyValueObject.create(testData2);
 
       // Then
       expect(vo1.equals(vo2)).toBeTruthy();

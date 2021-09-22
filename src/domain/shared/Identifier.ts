@@ -5,7 +5,7 @@ export abstract class Identifier<U extends string> extends ValueObject<
   string,
   U
 > {
-  constructor(id?: string) {
+  protected constructor(id?: string) {
     super(id ? id : nanoid());
   }
 }

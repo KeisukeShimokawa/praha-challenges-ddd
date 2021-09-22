@@ -34,7 +34,9 @@ jobs:
       # - run: npm run build --if-present
       - name: Starting docker compose ...
         run: npm run db:up
+      - name: Setting Up Prisma Migration ...
+        run: npm run migrate:test
       - name: Unit testing
         run: npm run test
       - name: Integration Testing
-        run: npm run test:e2e
+        run: npm run test:e2e:full
