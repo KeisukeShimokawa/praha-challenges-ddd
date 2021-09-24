@@ -136,3 +136,23 @@ export class ParticipantController {
   ) {}
 }
 ```
+
+## Q: リポジトリの単体テストでオブジェクトの永続化を検証する際に、モックを使用するのか、実際に DB を使用するのか、この判断をどのような基準をもとに選択していますか。
+
+現在リポジトリの単体テストでは、対象のエンティティの永続化や DTO の取得ができているのか検証するために、実際にデータベースにアクセスするテストを作成しています。
+
+- [参考](../src/__tests__/infrastructure/db/participant/QueryService/GetAllParticipant.QueryService.spec.ts)
+
+しかし、複数のテストケースから単一の Postgres コンテナにアクセスする必要があるため、テストの設定時に `runInBand` を設定する必要があり、結果としてテストの実行を並列化することができていない状況です。
+
+単体テストの段階でデータベースに実際にアクセスするテストには、メリット・デメリットがあるかと思いますが、案件の中でどちらの方針を採用するかなどの基準は合ったりしますか。
+
+以下は単体テスト段階でデータベースを使用する選択をした際の参考資料です。
+
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">以前 <a href="https://twitter.com/hashtag/fukabori?src=hash&amp;ref_src=twsrc%5Etfw">#fukabori</a> ep.13 で話したのですが、私がテストで実物とモック/スタブを使い分けるルールははっきりしていて、自分の開発マシンに入るものは常に本物を使い、入らないものだけモック/スタブを使います（個人の意見です）<a href="https://t.co/f9vuAUayQK">https://t.co/f9vuAUayQK</a> <a href="https://t.co/0rN6oVxmHw">https://t.co/0rN6oVxmHw</a></p>&mdash; Takuto Wada (@t_wada) <a href="https://twitter.com/t_wada/status/1216953597637713921?ref_src=twsrc%5Etfw">January 14, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">モック多用の自作自演テストやレイヤ間のテスト範囲重複を好まないので（個人の意見）、テストを内側と外側に寄せます。Railsの場合はRequest spec(HTTPレベルのテスト、E2Eより安定していてかつ粗粒度) とModel spec（ドメインロジックのテストを厚く書く）を基本的に書き、Controllerは例外系のみ。</p>&mdash; Takuto Wada (@t_wada) <a href="https://twitter.com/t_wada/status/1237200607045251073?ref_src=twsrc%5Etfw">March 10, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">（ちなみに、私はテストになるべくモックを使わず、可能な限り本物の DB を使う派です。モックをたくさん書くのではなく、テーブルの初期化やテストデータ管理に投資します）</p>&mdash; Takuto Wada (@t_wada) <a href="https://twitter.com/t_wada/status/923016589431128064?ref_src=twsrc%5Etfw">October 25, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+https://irof.hateblo.jp/entry/2021/09/21/101205
