@@ -1,7 +1,16 @@
 # API 設計
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<details>
+<summary>Table of Contents</summary>
+
+- [Q: REST API にて、ネストされたリソースを表現する際のメリット・デメリットは何でしょうか。](#q-rest-api-%E3%81%AB%E3%81%A6%E3%83%8D%E3%82%B9%E3%83%88%E3%81%95%E3%82%8C%E3%81%9F%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E8%A1%A8%E7%8F%BE%E3%81%99%E3%82%8B%E9%9A%9B%E3%81%AE%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88%E3%83%BB%E3%83%87%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88%E3%81%AF%E4%BD%95%E3%81%A7%E3%81%97%E3%82%87%E3%81%86%E3%81%8B)
+  - [なぜネストされたリソースを設計する方法を使うべきなのか](#%E3%81%AA%E3%81%9C%E3%83%8D%E3%82%B9%E3%83%88%E3%81%95%E3%82%8C%E3%81%9F%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E8%A8%AD%E8%A8%88%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%E3%82%92%E4%BD%BF%E3%81%86%E3%81%B9%E3%81%8D%E3%81%AA%E3%81%AE%E3%81%8B)
+  - [なぜネストされたリソースを設計する方法を使うべきではないのか](#%E3%81%AA%E3%81%9C%E3%83%8D%E3%82%B9%E3%83%88%E3%81%95%E3%82%8C%E3%81%9F%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E8%A8%AD%E8%A8%88%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%E3%82%92%E4%BD%BF%E3%81%86%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%84%E3%81%AE%E3%81%8B)
+
+</details>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 下記の参考資料をまとめていく。
 
