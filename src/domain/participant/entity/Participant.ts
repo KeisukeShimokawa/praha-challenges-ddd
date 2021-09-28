@@ -1,6 +1,6 @@
 import { Entity } from '../../shared/Entity';
 import { TaskId } from '../../task/vo/TaskId';
-import { PairId } from '../../team/PairId';
+import { PairId } from '../../team/vo/PairId';
 import { EnrollmentStatusType } from '../vo/EnrollmentStatus';
 import { ParticipantEmail } from '../vo/ParticipantEmail';
 import { ParticipantId } from '../vo/ParticipantId';
