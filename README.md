@@ -25,12 +25,12 @@
 
 ドメインモデル図
 
-![](https://github.com/KeisukeShimokawa/praha-challenges/raw/feature/task36-issue-116/architecture/36_DDD/assets/domainModel.png)
+![](https://github.com/KeisukeShimokawa/praha-challenges/raw/feature/task36-issue-116/architecture/36_DDD/task_1/assets/domainModel.png)
 
 ER 図
 
-![](https://github.com/KeisukeShimokawa/praha-challenges/raw/feature/task36-issue-116/architecture/36_DDD/assets/ER-v2.png)
+![](https://github.com/KeisukeShimokawa/praha-challenges/blob/feature/task36-issue-116/architecture/36_DDD/task_1/assets/ER-v2.png)
 
 ユースケース図
 
-![](https://github.com/KeisukeShimokawa/praha-challenges/raw/feature/task36-issue-116/architecture/36_DDD/assets/UseCase.png)
+![](https://github.com/KeisukeShimokawa/praha-challenges/raw/feature/task36-issue-116/architecture/36_DDD/task_1/assets/UseCase.png)
