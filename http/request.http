@@ -1,0 +1,6 @@
+### 参加者を全員取得するためのリクエスト
+GET http://localhost:3000/participants
+
+
+### 課題を全件取得するためのリクエスト
+GET http://localhost:3000/tasks
