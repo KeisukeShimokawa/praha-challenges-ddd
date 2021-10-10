@@ -2,7 +2,7 @@ import { EnrollmentStatusType } from 'src/domain/participant/vo/EnrollmentStatus
 import { Participant } from 'src/domain/participant/entity/Participant';
 import { ParticipantEmail } from 'src/domain/participant/vo/ParticipantEmail';
 import { ParticipantName } from 'src/domain/participant/vo/ParticipantName';
-import { TaskId } from 'src/domain/task/TaskId';
+import { TaskId } from 'src/domain/task/vo/TaskId';
 
 describe('エンティティ<参加者> Paricipant', () => {
   describe('初期状態でエンティティを生成できる', () => {
