@@ -1,3 +1,17 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<details>
+<summary>Table of Contents</summary>
+
+- [Open API](#open-api)
+  - [準備](#%E6%BA%96%E5%82%99)
+  - [型とパラメータ](#%E5%9E%8B%E3%81%A8%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF)
+  - [HTTP Header](#http-header)
+  - [HTTP Response](#http-response)
+
+</details>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Open API
 
 ## 準備
