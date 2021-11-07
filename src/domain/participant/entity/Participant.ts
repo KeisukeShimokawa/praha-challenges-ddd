@@ -4,17 +4,16 @@ import { PairId } from '../../team/vo/PairId';
 import { EnrollmentStatusType } from '../vo/EnrollmentStatus';
 import { ParticipantEmail } from '../vo/ParticipantEmail';
 import { ParticipantId } from '../vo/ParticipantId';
-import { ParticipantName } from '../vo/ParticipantName';
 
 interface ParticipantCreateArgs {
-  name: ParticipantName;
+  name: string;
   email: ParticipantEmail;
   tasks?: TaskId[];
   pair?: PairId;
 }
 
 interface ParticipantBaseProps {
-  name: ParticipantName;
+  name: string;
   email: ParticipantEmail;
   status: EnrollmentStatusType;
   tasks?: TaskId[];
