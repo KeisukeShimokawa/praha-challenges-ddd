@@ -1,8 +1,8 @@
-import { Entity } from 'src/domain/shared/Entity';
 import { TaskDescription } from '../vo/TaskDescription';
 import { TaskId } from '../vo/TaskId';
 import { TaskTitle } from '../vo/TaskTitle';
-import { TaskProgress } from './TaskProgress';
+import { TaskProgress } from '../../participant/entity/TaskProgress';
+import { Entity } from '../../shared/Entity';
 
 interface TaskCreateArgs {
   title: TaskTitle;

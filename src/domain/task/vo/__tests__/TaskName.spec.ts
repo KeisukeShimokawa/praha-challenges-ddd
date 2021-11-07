@@ -1,4 +1,4 @@
-import { TaskTitle } from 'src/domain/task/vo/TaskTitle';
+import { TaskTitle } from '../TaskTitle';
 
 describe('値オブジェクト <課題名> TaskTitle', () => {
   describe('設定する課題名が不正な値の場合に、例外を送出する', () => {
