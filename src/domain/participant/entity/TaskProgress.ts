@@ -1,7 +1,7 @@
-import { ParticipantId } from 'src/domain/participant/vo/ParticipantId';
-import { Entity } from 'src/domain/shared/Entity';
-import { ProgressStatus } from '../vo/ProgressStatus';
-import { TaskId } from '../vo/TaskId';
+import { ParticipantId } from '../vo/ParticipantId';
+import { Entity } from '../../shared/Entity';
+import { TaskProgressStatus } from '../vo/TaskProgressStatus';
+import { TaskId } from '../../task/vo/TaskId';
 import { TaskProgressId } from '../vo/TaskProgressId';
 
 interface TaskProgressCreateArgs {
@@ -12,7 +12,7 @@ interface TaskProgressCreateArgs {
 interface TaskProgressBaseProps {
   taskId: TaskId;
   participantId: ParticipantId;
-  progressStatus: ProgressStatus;
+  progressStatus: TaskProgressStatus;
 }
 
 export class TaskProgress extends Entity<
@@ -23,12 +23,18 @@ export class TaskProgress extends Entity<
     return this._props;
   }
 
+  /**
+   * 課題進捗が「未着手」の状態でエンティティを生成する
+   *
+   * @param args 課題進捗を生成する上で必要な情報
+   * @returns 課題進捗エンティティ
+   */
   public static create(args: TaskProgressCreateArgs): TaskProgress {
     const id = TaskProgressId.create();
 
     const baseProps = {
       ...args,
-      progressStatus: ProgressStatus.NOT_YET,
+      progressStatus: TaskProgressStatus.NOT_YET,
     };
 
     return new TaskProgress(id, baseProps);
