@@ -1,4 +1,5 @@
-import { ParticipantEmail } from 'src/domain/participant/vo/ParticipantEmail';
+import { DomainException } from 'src/domain/shared/DomainException';
+import { ParticipantEmail } from '../ParticipantEmail';
 
 describe('値オブジェクト<"参加者のメールアドレス"> ParticipantEmail', () => {
   describe('参加者のメールアドレスの制約に従う引数を受け取った場合、値オブジェクトを生成できる', () => {
@@ -21,7 +22,9 @@ describe('値オブジェクト<"参加者のメールアドレス"> Participant
       const testData = 'shimokawa';
 
       // Act & Assert
-      expect(() => ParticipantEmail.create(testData)).toThrow(expected);
+      expect(() => ParticipantEmail.create(testData)).toThrow(
+        new DomainException(expected),
+      );
     });
   });
 });
