@@ -1,19 +1,15 @@
-import { TaskDescription } from '../vo/TaskDescription';
 import { TaskId } from '../vo/TaskId';
 import { TaskTitle } from '../vo/TaskTitle';
-import { TaskProgress } from '../../participant/entity/TaskProgress';
 import { Entity } from '../../shared/Entity';
+import { TaskProgressId } from '../../participant/vo/TaskProgressId';
 
 interface TaskCreateArgs {
   title: TaskTitle;
-  description: TaskDescription;
-  taskProgresses: TaskProgress[];
 }
 
 interface TaskBaseProps {
   title: TaskTitle;
-  description: TaskDescription;
-  taskProgresses: TaskProgress[];
+  taskProgressIds: TaskProgressId[];
 }
 
 export class Task extends Entity<TaskBaseProps, TaskId> {
@@ -22,6 +18,7 @@ export class Task extends Entity<TaskBaseProps, TaskId> {
 
     const baseProps: TaskBaseProps = {
       ...args,
+      taskProgressIds: [] as TaskProgressId[],
     };
 
     return new Task(id, baseProps);
