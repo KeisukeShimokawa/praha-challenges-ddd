@@ -19,18 +19,6 @@
 - [静的解析](docs/LINTER.md)
 - [CI](docs/GITHUB_ACTIONS.md)
 
-## 課題 1 の結果
+## sudo モデリング
 
-詳細は [課題ページ](https://github.com/KeisukeShimokawa/praha-challenges/tree/feature/task36-issue-116/architecture/36_DDD/task_1) を参照する。
-
-ドメインモデル図
-
-![](https://github.com/KeisukeShimokawa/praha-challenges/raw/feature/task36-issue-116/architecture/36_DDD/task_1/assets/domainModel.png)
-
-ER 図
-
-![](https://github.com/KeisukeShimokawa/praha-challenges/blob/feature/task36-issue-116/architecture/36_DDD/task_1/assets/ER-v2.png)
-
-ユースケース図
-
-![](https://github.com/KeisukeShimokawa/praha-challenges/raw/feature/task36-issue-116/architecture/36_DDD/task_1/assets/UseCase.png)
+![](modeling/index.drawio.png)
