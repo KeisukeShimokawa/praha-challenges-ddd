@@ -2,15 +2,15 @@ import { Entity } from 'src/domain/shared/Entity';
 import { Identifier } from 'src/domain/shared/Identifier';
 import * as nanoid from 'nanoid';
 
-interface DummyEntityProps {
-  name: string;
-  age: number;
-}
-
-class DummyIdentifier extends Identifier<'DummyIdentifier'> {
+class DummyIdentifier extends Identifier {
   public static create(): DummyIdentifier {
     return new DummyIdentifier();
   }
+}
+
+interface DummyEntityProps {
+  name: string;
+  age: number;
 }
 
 class DummyEntity extends Entity<DummyEntityProps, DummyIdentifier> {

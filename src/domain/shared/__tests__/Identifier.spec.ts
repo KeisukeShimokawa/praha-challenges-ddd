@@ -1,7 +1,7 @@
 import { Identifier } from 'src/domain/shared/Identifier';
 import * as nanoid from 'nanoid';
 
-class DummyIdentifier extends Identifier<'DummyIdentifier'> {
+class DummyIdentifier extends Identifier {
   public static create(): DummyIdentifier {
     return new DummyIdentifier();
   }
@@ -18,8 +18,8 @@ describe('識別子 Identifier の基底クラス', () => {
     nanoidSpy.mockReset();
   });
 
-  describe('文字列の識別子を自動生成する', () => {
-    it('引数に何も指定しない場合、nanoid を使用して自動的に識別子を生成する', () => {
+  describe('文字列の識別子を create で生成する', () => {
+    it('引数に何も指定しない場合、nanoid を使用して自動的に識別子を生成できる', () => {
       // Given
       const expected = '1234';
       nanoidSpy.mockReturnValueOnce(expected);
@@ -32,7 +32,7 @@ describe('識別子 Identifier の基底クラス', () => {
     });
   });
 
-  describe('識別子の等価性を担保できる', () => {
+  describe('識別子の等価性を equals で担保できる', () => {
     it('同じ文字列の値を有する識別子を2つ生成し、equals で比較すると true となる', () => {
       // Given
       const identity = 'id-same-1';
@@ -43,6 +43,7 @@ describe('識別子 Identifier の基底クラス', () => {
       const identifier2 = DummyIdentifier.create();
 
       // Then
+      expect(identifier1 === identifier2).toBeFalsy();
       expect(identifier1.equals(identifier2)).toBeTruthy();
     });
 

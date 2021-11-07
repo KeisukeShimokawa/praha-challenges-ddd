@@ -1,6 +1,6 @@
 import { Identifier } from './Identifier';
 
-export abstract class Entity<T, U extends Identifier<string>> {
+export abstract class Entity<T, U extends Identifier> {
   protected readonly _id: U;
   protected readonly _props: T;
 
