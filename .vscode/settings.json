@@ -13,6 +13,9 @@
     "gitlens.codeLens.scopes": ["document"],
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
   "editor.lineNumbers": "on",
   "editor.rulers": [80],
   "eslint.packageManager": "npm",
