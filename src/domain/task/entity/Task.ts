@@ -13,6 +13,12 @@ interface TaskBaseProps {
 }
 
 export class Task extends Entity<TaskBaseProps, TaskId> {
+  /**
+   * タイトルが設定され、参加者の課題進捗には紐づいていない状態のインスタンスを返す
+   *
+   * @param args 課題のタイトル
+   * @returns タイトルが設定された課題インスタンスを返す
+   */
   public static create(args: TaskCreateArgs): Task {
     const id = TaskId.create();
 

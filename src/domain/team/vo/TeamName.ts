@@ -8,6 +8,12 @@ export class TeamName extends ValueObject<string> {
     return result;
   }
 
+  /**
+   * 英字3文字のチーム名のインスタンスを生成する
+   *
+   * @param name 数字3文字のチーム名
+   * @returns チーム名の値オブジェクト
+   */
   public static create(name: string): TeamName {
     if (!this.isValidName(name)) {
       throw new DomainException('チーム名が正しいフォーマットではありません。');
