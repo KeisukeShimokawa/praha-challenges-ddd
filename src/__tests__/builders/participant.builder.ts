@@ -1,7 +1,7 @@
 import { Prisma } from '.prisma/client';
 import { PrismaService } from 'src/shared/prisma/PrismaService';
 import * as faker from 'faker';
-import { EnrollmentStatusType } from 'src/domain/participant/vo/EnrollmentStatus';
+import { EnrollmentStatusType } from 'src/domain/participant/vo/ParticipantEnrollmentStatus';
 
 export const ParticipantBuilder = async (
   client: PrismaService,

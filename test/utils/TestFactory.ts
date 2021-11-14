@@ -1,4 +1,4 @@
-import { EnrollmentStatusType } from 'src/domain/participant/vo/EnrollmentStatus';
+import { EnrollmentStatusType } from 'src/domain/participant/vo/ParticipantEnrollmentStatus';
 import { PrismaService } from 'src/shared/prisma/PrismaService';
 
 const client = new PrismaService();

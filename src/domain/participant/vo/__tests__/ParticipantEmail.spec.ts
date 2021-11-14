@@ -1,4 +1,4 @@
-import { DomainException } from 'src/domain/shared/DomainException';
+import { DomainException } from '../../../shared/DomainException';
 import { ParticipantEmail } from '../ParticipantEmail';
 
 describe('値オブジェクト<"参加者のメールアドレス"> ParticipantEmail', () => {

@@ -1,9 +1,8 @@
 import { mock, MockProxy } from 'jest-mock-extended';
-import { ProgressStatus } from 'src/domain/task/vo/ProgressStatus';
 import { GetAllTaskUseCase } from 'src/usecase/task/GetAllTask.usecase';
 import {
-  GetAllTaskDTO,
   IGetAllTaskQueryService,
+  GetAllTaskDTO,
 } from 'src/usecase/task/QueryServiceInterface/GetAllTask.queryServiceInterface';
 
 describe('ユースケース: 課題をすべて取得する', () => {

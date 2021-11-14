@@ -2,7 +2,7 @@ import { GetAllParticipantUseCase } from 'src/usecase/participant/GetAllParticip
 import { ParticipantController } from 'src/presentation/participant/participant.controller';
 import { Test, TestingModule } from '@nestjs/testing';
 import { GetAllParticipantDTO } from 'src/usecase/participant/QueryServiceInterface/GetAllParticipant.queryServiceInterface';
-import { EnrollmentStatusType } from 'src/domain/participant/vo/EnrollmentStatus';
+import { EnrollmentStatusType } from 'src/domain/participant/vo/ParticipantEnrollmentStatus';
 
 describe('コントローラー: 参加者に関するエンドポイントを提供する', () => {
   let sut: ParticipantController;
