@@ -16,4 +16,8 @@ export abstract class Entity<T, U extends Identifier> {
 
     return this._id.equals(object._id);
   }
+
+  get props(): T {
+    return this._props;
+  }
 }

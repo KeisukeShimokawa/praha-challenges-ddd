@@ -19,10 +19,6 @@ export class TaskProgress extends Entity<
   TaskProgressBaseProps,
   TaskProgressId
 > {
-  get props(): TaskProgressBaseProps {
-    return this._props;
-  }
-
   /**
    * 課題進捗が「未着手」の状態でエンティティを生成する
    *

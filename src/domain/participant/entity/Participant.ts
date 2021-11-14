@@ -21,10 +21,12 @@ interface ParticipantBaseProps {
 }
 
 export class Participant extends Entity<ParticipantBaseProps, ParticipantId> {
-  get props(): ParticipantBaseProps {
-    return this._props;
-  }
-
+  /**
+   * 在籍ステータスが「在籍中」であり、どのチームやペアに所属していないインスタンスを生成
+   *
+   * @param args 参加者を追加する上で必要な情報
+   * @returns 参加者をどのチームやペアにも所属していない状態のインスタンス
+   */
   public static create(args: ParticipantCreateArgs): Participant {
     const id = ParticipantId.create();
 
