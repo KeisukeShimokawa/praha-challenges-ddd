@@ -22,10 +22,11 @@ describe('値オブジェクト<"チーム名"> TeamName', () => {
       const testData = '1234';
 
       // Act
+      const target = () => TeamName.create(testData);
+
       // Assert
-      expect(() => TeamName.create(testData)).toThrow(
-        new DomainException(expected),
-      );
+      expect(target).toThrow(expected);
+      expect(target).toThrow(DomainException);
     });
 
     it('"" を引数に指定し、"チーム名が正しいフォーマットではありません。" という例外を送出する', () => {
@@ -34,10 +35,11 @@ describe('値オブジェクト<"チーム名"> TeamName', () => {
       const testData = '';
 
       // Act
+      const target = () => TeamName.create(testData);
+
       // Assert
-      expect(() => TeamName.create(testData)).toThrow(
-        new DomainException(expected),
-      );
+      expect(target).toThrow(expected);
+      expect(target).toThrow(DomainException);
     });
   });
 });

@@ -22,10 +22,11 @@ describe('値オブジェクト<"ペア名"> PairName', () => {
       const testData = '12';
 
       // Act
+      const target = () => PairName.create(testData);
+
       // Assert
-      expect(() => PairName.create(testData)).toThrow(
-        new DomainException(expected),
-      );
+      expect(target).toThrow(expected);
+      expect(target).toThrow(DomainException);
     });
 
     it('"" を引数に指定し、"ペア名が正しいフォーマットではありません。" という例外を送出する', () => {
@@ -34,10 +35,11 @@ describe('値オブジェクト<"ペア名"> PairName', () => {
       const testData = '';
 
       // Act
+      const target = () => PairName.create(testData);
+
       // Assert
-      expect(() => PairName.create(testData)).toThrow(
-        new DomainException(expected),
-      );
+      expect(target).toThrow(expected);
+      expect(target).toThrow(DomainException);
     });
   });
 });
