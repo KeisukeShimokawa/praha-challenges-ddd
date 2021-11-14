@@ -29,10 +29,11 @@ model Participant {
   name             String
   enrollmentStatus String
   progresses       TaskProgresses[]
+  pair             Pair?            @relation(fields: [pairId], references: [id])
+  pairId           String?
   createdAt        DateTime         @default(now())
   updatedAt        DateTime         @updatedAt
 
-  Belonging Belonging[]
   @@map("participant")
 }
 
@@ -66,25 +67,25 @@ model Team {
 }
 
 model Pair {
-  id           String      @id
+  id           String        @id
   name         String
-  team         Team        @relation(fields: [teamId], references: [id])
+  team         Team          @relation(fields: [teamId], references: [id])
   teamId       String
-  participants Belonging[]
-  createdAt    DateTime    @default(now())
-  updatedAt    DateTime    @updatedAt
+  participants Participant[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
 
   @@map("pair")
 }
 
-model Belonging {
-  pair          Pair        @relation(fields: [pairId], references: [id])
-  pairId        String
-  participant   Participant @relation(fields: [participantId], references: [id])
-  participantId String
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
+// model Belonging {
+//   pair          Pair        @relation(fields: [pairId], references: [id])
+//   pairId        String
+//   participant   Participant @relation(fields: [participantId], references: [id])
+//   participantId String
+//   createdAt     DateTime    @default(now())
+//   updatedAt     DateTime    @updatedAt
 
-  @@unique([participantId, pairId])
-  @@map("belonging")
-}
+//   @@unique([participantId, pairId])
+//   @@map("belonging")
+// }
