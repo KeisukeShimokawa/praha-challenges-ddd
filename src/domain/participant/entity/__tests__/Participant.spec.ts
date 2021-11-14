@@ -1,7 +1,5 @@
 import { ParticipantEmail } from '../../vo/ParticipantEmail';
-import { EnrollmentStatusType } from '../../vo/ParticipantEnrollmentStatus';
 import { Participant } from '../Participant';
-import { TaskProgress } from '../TaskProgress';
 
 describe('エンティティ<参加者> Paricipant', () => {
   describe('初期状態でエンティティを生成できる', () => {

@@ -1,5 +1,5 @@
-import { ParticipantId } from 'src/domain/participant/vo/ParticipantId';
-import { Entity } from 'src/domain/shared/Entity';
+import { ParticipantId } from '../../participant/vo/ParticipantId';
+import { Entity } from '../../shared/Entity';
 import { PairId } from '../vo/PairId';
 import { PairName } from '../vo/PairName';
 

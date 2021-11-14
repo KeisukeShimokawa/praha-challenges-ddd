@@ -1,7 +1,7 @@
-import { Entity } from 'src/domain/shared/Entity';
 import { TeamName } from '../vo/TeamName';
 import { Pair } from './Pair';
 import { TeamId } from '../vo/TeamId';
+import { Entity } from '../../shared/Entity';
 
 interface TeamCreateArgs {
   teamName: TeamName;

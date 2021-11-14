@@ -1,4 +1,4 @@
-import { ValueObject } from 'src/domain/shared/ValueObject';
+import { ValueObject } from '../ValueObject';
 
 class DummyValueObject extends ValueObject<string> {
   public static create(value: string): DummyValueObject {

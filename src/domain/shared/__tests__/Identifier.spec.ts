@@ -1,5 +1,5 @@
-import { Identifier } from 'src/domain/shared/Identifier';
 import * as nanoid from 'nanoid';
+import { Identifier } from '../Identifier';
 
 class DummyIdentifier extends Identifier {
   public static create(): DummyIdentifier {
