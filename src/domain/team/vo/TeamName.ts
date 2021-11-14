@@ -3,7 +3,7 @@ import { ValueObject } from '../../shared/ValueObject';
 
 export class TeamName extends ValueObject<string> {
   public static isValidName(name: string): boolean {
-    const re = /\d{1,3}/;
+    const re = new RegExp(/^[0-9]{1,3}$/, 'i');
     const result = re.test(String(name));
     return result;
   }
