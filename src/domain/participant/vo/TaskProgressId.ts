@@ -1,4 +1,4 @@
-import { Identifier } from 'src/domain/shared/Identifier';
+import { Identifier } from '../../shared/Identifier';
 
 export class TaskProgressId extends Identifier {
   public static create(id?): TaskProgressId {
