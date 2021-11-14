@@ -5,12 +5,13 @@ const config = {
     project: 'tsconfig.json',
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint/eslint-plugin', 'unused-imports'],
+  plugins: ['@typescript-eslint/eslint-plugin', 'unused-imports', 'import'],
   extends: [
     'plugin:@typescript-eslint/recommended',
-    'plugin:import/recommended',
-    'plugin:import/typescript',
-    'plugin:prettier/recommended',
+    // 'plugin:import/recommended',
+    // 'plugin:import/typescript',
+    'plugin:jest/recommended',
+    'prettier',
   ],
   root: true,
   env: {
@@ -18,6 +19,13 @@ const config = {
     jest: true,
   },
   ignorePatterns: ['.eslintrc.js'],
+  settings: {
+    'import/resolver': {
+      typescript: {
+        alwaysTryTypes: true,
+      },
+    },
+  },
   rules: {
     '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
@@ -35,5 +43,44 @@ const config = {
       },
     ],
   },
+  // https://buildersbox.corp-sansan.com/entry/2021/05/28/110000
+  overrides: [
+    {
+      // TypeScript 用に設定を上書く
+      files: ['*.ts', '*.tsx'],
+      rules: {},
+    },
+    {
+      // import を sort するため、AutoFix をかける範囲で設定を上書く
+      files: ['src/folder/**/*.{js,jsx,ts,tsx}'],
+      rules: {
+        'import/order': [
+          'error',
+          {
+            groups: [
+              'builtin',
+              'external',
+              'parent',
+              'sibling',
+              'index',
+              'object',
+              'type',
+            ],
+            pathGroups: [
+              {
+                pattern: '@alias/**',
+                group: 'parent',
+                position: 'before',
+              },
+            ],
+            alphabetize: {
+              order: 'asc',
+            },
+            'newlines-between': 'always',
+          },
+        ],
+      },
+    },
+  ],
 };
 module.exports = config;
