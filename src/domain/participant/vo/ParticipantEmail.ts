@@ -8,7 +8,6 @@ export class ParticipantEmail extends ValueObject<string> {
     const re =
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     const result = re.test(String(email));
-
     return result;
   }
 

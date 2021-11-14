@@ -21,10 +21,11 @@ describe('値オブジェクト<"参加者のメールアドレス"> Participant
       const expected = 'メールアドレスが正しいフォーマットではありません。';
       const testData = 'shimokawa';
 
-      // Act & Assert
-      expect(() => ParticipantEmail.create(testData)).toThrow(
-        new DomainException(expected),
-      );
+      // Act
+      const target = () => ParticipantEmail.create(testData);
+
+      // Assert
+      expect(target).toThrow(new DomainException(expected));
     });
   });
 });
