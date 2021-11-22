@@ -3,7 +3,7 @@ import { ValueObject } from '../../shared/ValueObject';
 
 export class PairName extends ValueObject<string> {
   private static isValidName(name: string): boolean {
-    const re = /[a-z]{1}/;
+    const re = /^[a-z]{1}$/;
     const result = re.test(String(name));
     return result;
   }
