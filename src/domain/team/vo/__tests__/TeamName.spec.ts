@@ -3,43 +3,40 @@ import { TeamName } from '../TeamName';
 
 describe('値オブジェクト<"チーム名"> TeamName', () => {
   describe('チーム名に関する制約に従う引数を受け取った場合、値オブジェクトが生成される', () => {
-    it('"123" を引数に指定し、値オブジェクトを生成する', () => {
-      // Arrange
-      const expected = '123';
+    it.each`
+      name
+      ${'1'}
+      ${'12'}
+      ${'123'}
+    `(
+      '$name を引数に指定し、値オブジェクトのインスタンスが生成される',
+      ({ name }: { name: string }) => {
+        // Act
+        const target = TeamName.create(name);
 
-      // Act
-      const actual = TeamName.create(expected);
-
-      // Assert
-      expect(actual.value).toEqual(expected);
-    });
+        // Assert
+        expect(target.value).toBe(name);
+      },
+    );
   });
 
   describe('チーム名に関する制約を破る引数を受け取った場合、ドメイン層固有の例外が送出される', () => {
-    it('"1234" を引数に指定し、"チーム名が正しいフォーマットではありません。" という例外を送出する', () => {
-      // Arrange
-      const expected = 'チーム名が正しいフォーマットではありません。';
-      const testData = '1234';
+    it.each`
+      name      | expected
+      ${''}     | ${'チーム名が正しいフォーマットではありません。'}
+      ${'1234'} | ${'チーム名が正しいフォーマットではありません。'}
+      ${'abc'}  | ${'チーム名が正しいフォーマットではありません。'}
+      ${'12a'}  | ${'チーム名が正しいフォーマットではありません。'}
+    `(
+      '"$name" を引数に指定し、$expected という例外を送出する。',
+      ({ name, expected }) => {
+        // Act
+        const target = () => TeamName.create(name);
 
-      // Act
-      const target = () => TeamName.create(testData);
-
-      // Assert
-      expect(target).toThrow(expected);
-      expect(target).toThrow(DomainException);
-    });
-
-    it('"" を引数に指定し、"チーム名が正しいフォーマットではありません。" という例外を送出する', () => {
-      // Arrange
-      const expected = 'チーム名が正しいフォーマットではありません。';
-      const testData = '';
-
-      // Act
-      const target = () => TeamName.create(testData);
-
-      // Assert
-      expect(target).toThrow(expected);
-      expect(target).toThrow(DomainException);
-    });
+        // Assert
+        expect(target).toThrow(expected);
+        expect(target).toThrow(DomainException);
+      },
+    );
   });
 });
