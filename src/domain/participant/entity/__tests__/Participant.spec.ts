@@ -17,4 +17,6 @@ describe('エンティティ<参加者> Paricipant', () => {
     expect(participant.props.tasks.length).toEqual(0);
     expect(participant.props.pair).toBeNull();
   });
+
+  it.todo('進捗ステータスを一度「完了」にするとそれ以降は変更できない');
 });
