@@ -30,7 +30,8 @@
     "seed:dev": "dotenv -e .env.dev -- prisma db seed",
     "seed:test": "dotenv -e .env.test -- prisma db seed",
     "studio:dev": "dotenv -e .env.dev -- prisma studio",
-    "studio:test": "dotenv -e .env.test -- prisma studio"
+    "studio:test": "dotenv -e .env.test -- prisma studio",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@nestjs/common": "^8.2.0",
@@ -60,6 +61,7 @@
     "eslint-plugin-jest": "^25.2.4",
     "eslint-plugin-unused-imports": "^1.1.5",
     "faker": "^5.5.3",
+    "husky": "^7.0.4",
     "jest": "27.0.6",
     "jest-mock-extended": "^2.0.2-beta2",
     "prettier": "^2.3.2",
